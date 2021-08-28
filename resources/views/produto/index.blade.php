@@ -8,6 +8,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     </head>
     <body>
+
+        <script>
+            function ConfirmDelete() {
+                return confirm('Tem certeza que deseja excluir este registro?');
+            }
+        </script>
+
+        
         @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
@@ -29,9 +37,18 @@
                             <td> {{$value->nome}}</td>
                             <td> {{$value->descricao}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ URL::to('produto/' . $value->id) }}">Visualizar</a>
+                        <a class="btn btn-primary" href="{{ URL::to('produto/' . $value->id) }}">Visualizar</a>
                         <a class="btn btn-warning" href="{{ URL::to('produto/' . $value->id . '/edit') }}"> editar</a>
-                        <a class="btn btn-danger" href="#"> deletar</a>
+                        
+                        
+                    {{ Form::open(array('url' => 'produto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Excluir', array('class' => 'btn btn-danger')) }}
+                    {{ Form::close() }}
+                        
+                        
+                        
+                       
                     </td>
                         </tr>
                         @endforeach
