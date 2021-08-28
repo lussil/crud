@@ -67,9 +67,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
+    public function show($id)
     {
+        $produto = Produto::findOrFail($id);
         
+        return view('produto.show', ['produto' => $produto]);
     }
 
     /**
@@ -80,7 +82,7 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        //
+       
     }
 
     /**

@@ -29,7 +29,7 @@
                             <td> {{$value->nome}}</td>
                             <td> {{$value->descricao}}</td>
                             <td>
-                        <a class="btn btn-primary" href="#">Visualizar</a>
+                                <a class="btn btn-primary" href="{{ URL::to('produto/' . $value->id) }}">Visualizar</a>
                         <a class="btn btn-warning" href="#"> editar</a>
                         <a class="btn btn-danger" href="#"> deletar</a>
                     </td>
