@@ -26,7 +26,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('produto.create');
     }
 
     /**
@@ -37,7 +37,28 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+            'nome.required' => 'O campo nome é obrigatório!',
+            'nome.min' => 'O campo nome precisa ter no mínimo :min caracteres!',
+            'descricao.required' => 'O campo descrição é obrigatório!',
+            'valor.required' => 'O campo valor é obrigatório!',
+        ];
+
+        $validateData = $request->validate([
+            'nome'      => 'required|min:7',
+            'descricao' => 'required',
+            'valor' => 'required',
+        ], $message);
+
+
+        $produto = new Produto;
+        $produto->nome      = $request->nome;
+        $produto->descricao = $request->descricao;
+        $produto->valor = $request->valor;
+        
+        $produto->save();
+
+        return redirect()->route('produto.index')->with('message', 'Produto criado com sucesso!');
     }
 
     /**
@@ -48,7 +69,7 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        
     }
 
     /**

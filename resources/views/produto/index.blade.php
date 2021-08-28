@@ -1,4 +1,3 @@
-
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -11,7 +10,7 @@
     <body>
         @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
-    @endif
+        @endif
         <div class="container col-8">
          <table class="table  no-margin">
             <thead>
@@ -30,7 +29,7 @@
                             <td> {{$value->nome}}</td>
                             <td> {{$value->descricao}}</td>
                             <td>
-                        <a class="btn btn-primary" href="{{ URL::to('produto/' . $value->id) }}">Visualizar</a>
+                        <a class="btn btn-primary" href="#">Visualizar</a>
                         <a class="btn btn-warning" href="#"> editar</a>
                         <a class="btn btn-danger" href="#"> deletar</a>
                     </td>
