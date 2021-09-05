@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Produtos docinhos</title>
+        <title>Categorias</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     </head>
     <body>
@@ -21,27 +21,15 @@
             </div>
             @endif
 
-            {{ Form::model($produto,array('route' => array('produto.update', $produto->id), 'method' => 'PUT')) }}
-
-            {{ Form::label('nome', 'Nome do produtos') }}
-            {{ Form::text('nome', $produto->nome , ['class' => 'form-control'] )}}
-
-            {{ Form::label('categoria', 'Categoria') }}
-            {{ Form::select('categoria_id', $categorias , ['class' => 'form-control'] ) }}
+            {{ Form::open(array('url' => '/categoria/create')) }}
+        
+            {{ Form::label('nome', 'Nome do Categorias') }}
+            {{ Form::text('nome', null , ['class' => 'form-control'] )}}
             
-            <br>
-            
-            {{ Form::label('descricao', 'Descrição') }}
-            {{ Form::text('descricao', $produto->descricao , ['class' => 'form-control'] ) }}
-
-            {{ Form::label('descricao', 'Descrição') }}
-            {{ Form::number('valor', $produto->valor, ['class' => 'form-control']) }}
-                    
+          
             {{ Form::submit('Enviar' , ['class' => 'btn btn-outline-success ']) }}
         
             {{ Form::close()  }}
-           
-         
         
         </div>
     

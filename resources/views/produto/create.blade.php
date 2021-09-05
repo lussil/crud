@@ -25,7 +25,11 @@
         
             {{ Form::label('nome', 'Nome do produtos') }}
             {{ Form::text('nome', null , ['class' => 'form-control'] )}}
+             
+            {{ Form::label('categoria', 'Categoria') }}
+            {{ Form::select('categoria_id', $categorias , ['class' => 'form-control'] ) }}
             
+            <br>
             {{ Form::label('descricao', 'Descrição') }}
             {{ Form::text('descricao', null , ['class' => 'form-control'] ) }}
 

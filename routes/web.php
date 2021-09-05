@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\CategoriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,7 @@ use App\Http\Controllers\ProdutoController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+// Rotas para os Produtos
 Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
 
 Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create');
@@ -28,3 +29,16 @@ Route::get('/produto/{id}/edit' , [ProdutoController::class, 'edit'])->name('pro
 Route::put('/produto/{id}' , [ProdutoController::class, 'update'])->name('produto.update');
 
 Route::delete('/produto/{id}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
+
+// Rotas para Categorias
+Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
+
+Route::get('/categoria/create', [CategoriaController::class, 'create'])->name('categoria.create');
+Route::post('/categoria/create', [CategoriaController::class, 'store'])->name('categoria.store');
+
+Route::get('/categoria/{id}' ,  [CategoriaController::class, 'show'])->name('categoria.show');
+
+Route::get('/categoria/{id}/edit' , [CategoriaController::class, 'edit'])->name('categoria.edit');
+Route::put('/categoria/{id}' , [CategoriaController::class, 'update'])->name('categoria.update');
+
+Route::delete('/categoria/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
